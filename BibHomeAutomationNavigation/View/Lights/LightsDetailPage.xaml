@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="BibHomeAutomationNavigation.LightsDetailPage"
+			 Title="Lights">
+	<ContentPage.Content>
+		<StackLayout>
+			<Label x:Name="LightLabel"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Switch x:Name="LightSwitch" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Toggled="onSwitchValueChanged" />
+			<Slider x:Name="LightSlider" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" ValueChanged="onSliderValueChanged" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

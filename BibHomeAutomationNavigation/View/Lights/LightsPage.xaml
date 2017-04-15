@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BibHomeAutomationNavigation.LightsPage" Title="Lights">
+	<ContentPage.Content>
+		<ListView x:Name="lstView" Grid.Row="1" IsGroupingEnabled="true" GroupDisplayBinding="{ Binding Title }" >
+			<ListView.GroupHeaderTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<Label Text="{Binding Title}" />
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.GroupHeaderTemplate>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout>
+							<Label Text="{Binding label}" />
+							<Label Text="{Binding connected}" />
+							<Switch IsToggled="{Binding power}" Toggled="onSwitchValueChanged" />
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

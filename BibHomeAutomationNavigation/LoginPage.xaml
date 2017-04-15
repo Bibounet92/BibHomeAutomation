@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BibHomeAutomationNavigation.LoginPage" >
+	<ContentPage.Content>
+		<StackLayout Padding="0,20,0,0" BackgroundColor="#0F80FE" VerticalOptions="FillAndExpand" Spacing="20">
+			<Label Text="Bib Home Automation" TextColor="White" HorizontalOptions="Center" FontAttributes="Bold" />
+			<Image Source="Icon-76.png" />
+			<StackLayout Padding ="0,20,0,0" HorizontalOptions="FillAndExpand" Spacing="0" >
+				<Entry x:Name="usernameEntry" Placeholder="Username" BackgroundColor="#0F80FE" PlaceholderColor="White" />
+				<Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" BackgroundColor="#0F80FE" PlaceholderColor="White" />
+			</StackLayout>
+			<StackLayout
+   Padding ="0,20,0,0"
+				Orientation="Horizontal"
+   HorizontalOptions="CenterAndExpand"
+   Spacing="30">
+   <Button Clicked="OnCancelButtonClicked"
+      x:Name="buttonCancel"
+      Text="Cancel"
+      TextColor="White"
+      BackgroundColor="#0F80FE"
+      BorderRadius="15"
+      BorderColor="White"
+      BorderWidth="2"
+      HeightRequest="40"
+      WidthRequest="150"/>
+   <Button Clicked="OnLoginButtonClicked"
+      x:Name="buttonLogin"
+      Text="Log in"
+      TextColor="#0F80FE"
+      BackgroundColor="White"
+      BorderRadius="15"
+      HeightRequest="40"
+      WidthRequest="150"/>
+</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
