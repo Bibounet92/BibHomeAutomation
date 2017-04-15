@@ -101,6 +101,9 @@
     <Compile Include="Controller\Traffic\GoogleMapsManager.cs" />
     <Compile Include="Controller\Traffic\RatpManager.cs" />
     <Compile Include="AppConstantsSample.cs" />
+    <Compile Include="Model\DomoticzObjects\DomoticzJsonDevice.cs" />
+    <Compile Include="Controller\Domoticz\DomoticzManager.cs" />
+    <Compile Include="Model\DomoticzObjects\DomoticzDevice.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -174,6 +177,8 @@
     <Folder Include="Controller\Lifx\" />
     <Folder Include="View\Lights\" />
     <Folder Include="Controller\Traffic\" />
+    <Folder Include="Model\DomoticzObjects\" />
+    <Folder Include="Controller\Domoticz\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

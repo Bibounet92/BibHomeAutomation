@@ -1,13 +1,10 @@
 ﻿<Properties StartupConfiguration="{3D54620E-23F2-462B-A824-B074D41BD507}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="BibHomeAutomation Status">
     <Files>
-      <File FileName="BibHomeAutomationNavigation/Model/LifxObjects/LifxConstants.cs" Line="3" Column="28" />
-      <File FileName="LifxObjects Status" />
-      <File FileName="BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" Line="20" Column="4" />
       <File FileName="BibHomeAutomation Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/Trafic/GoogleMapsManager.cs" relfile="BibHomeAutomationNavigation/Trafic/GoogleMapsManager.cs" line="42" column="1" />
@@ -16,5 +13,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.BibHomeAutomationNavigation.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.09F8DF82-809C-4268-8238-FE429D7BF824" />
+  <MonoDevelop.Ide.ItemProperties.BibHomeAutomationNavigation.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.3c8d8d999fc93b3d1bffaa0260572c9da75063b4" />
 </Properties>

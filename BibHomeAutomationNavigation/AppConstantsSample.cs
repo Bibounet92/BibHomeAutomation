@@ -5,6 +5,7 @@
 		// API Keys
 		public const string GoogleMapsApiKey = "";
 		public const string LifxApiKey = "";
+		public const string DomoticzApiKey = "";
 
 		// Login info
 		public const string AdminUser = "";
@@ -19,7 +20,7 @@
 		// Domoticz Urls
 		public const string DomoticzBaseUrl = "";
 
-		// Domoticz Urls
+		// Ratp Urls
 		public const string RatpBaseUrl = "https://api-ratp.pierre-grimaud.fr/v3/";
 	}
 }
