@@ -1,5 +1,12 @@
 ﻿<Properties StartupConfiguration="{3D54620E-23F2-462B-A824-B074D41BD507}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="BibHomeAutomation Status">
+    <Files>
+      <File FileName="BibHomeAutomationNavigation/Model/LifxObjects/LifxConstants.cs" Line="3" Column="28" />
+      <File FileName="LifxObjects Status" />
+      <File FileName="BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" Line="20" Column="4" />
+      <File FileName="BibHomeAutomation Status" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

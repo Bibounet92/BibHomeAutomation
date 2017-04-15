@@ -18,7 +18,7 @@ namespace BibHomeAutomationNavigation.LIFX
 
 		public LifxManager()
 		{
-			_auth = LifxConstants.authKey;
+			_auth = AppConstants.LifxApiKey;
 			var webServiceManager = new WebServiceManager(_auth, "Bearer");
 
 		}
