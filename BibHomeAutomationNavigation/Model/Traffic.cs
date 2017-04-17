@@ -26,8 +26,11 @@ namespace BibHomeAutomationNavigation
 		public Traffic(GoogleMapsTrafficJson gmJson)
 		{
 			TypeTraffic = "Cars";
-			Title = gmJson.origin_addresses[0] + " - " + gmJson.destination_addresses[0];
-			Message = "Duration : " + gmJson.rows[0].elements[0].duration.text + " ( " + gmJson.rows[0].elements[0].distance.text + " ) ";
+			if (gmJson.alias is null)
+				Title = gmJson.origin_addresses[0] + " - " + gmJson.destination_addresses[0];
+			else
+				Title = gmJson.alias;
+			Message = "Duration : " + gmJson.rows[0].elements[0].duration_in_traffic.text + " for " + gmJson.rows[0].elements[0].distance.text + " (normally : " + gmJson.rows[0].elements[0].duration.text + ")";
 			ApiCallDate = DateTime.Now.ToString();
 		}
 	}

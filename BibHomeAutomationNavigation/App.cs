@@ -1,14 +1,19 @@
 ﻿using Xamarin.Forms;
+using BibHomeAutomationNavigation.Netatmo;
 
 namespace BibHomeAutomationNavigation
 {
 	public class App : Application
 	{
 		public static bool IsUserLoggedIn { get; set; }
+		public static NetatmoManager netatmoManager;
 
 		public App()
 		{
 			//MainPage = new BibHomeAutomationNavigation.MainPage();
+			netatmoManager = new NetatmoManager();
+			//netatmoManager.LoginSuccessful += ApiLoginSuccessful;
+			netatmoManager.Login(new[] { NetatmoScope.read_station, NetatmoScope.read_thermostat });
 
 			if (!IsUserLoggedIn)
 			{

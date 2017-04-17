@@ -48,18 +48,18 @@
     </Compile>
     <Compile Include="AppConstants.cs" />
     <Compile Include="Framework\WebService\WebServiceManager.cs" />
-    <Compile Include="Model\LifxObjects\LifxBulb.cs" />
-    <Compile Include="Model\LifxObjects\LifxCapability.cs" />
-    <Compile Include="Model\LifxObjects\LifxColor.cs" />
-    <Compile Include="Model\LifxObjects\LifxConstants.cs" />
-    <Compile Include="Model\LifxObjects\LifxGroup.cs" />
-    <Compile Include="Model\LifxObjects\LifxHome.cs" />
-    <Compile Include="Model\LifxObjects\LifxLocation.cs" />
-    <Compile Include="Model\LifxObjects\LifxObject.cs" />
-    <Compile Include="Model\LifxObjects\LifxStairs.cs" />
+    <Compile Include="Model\Lifx\LifxBulb.cs" />
+    <Compile Include="Model\Lifx\LifxCapability.cs" />
+    <Compile Include="Model\Lifx\LifxColor.cs" />
+    <Compile Include="Model\Lifx\LifxConstants.cs" />
+    <Compile Include="Model\Lifx\LifxGroup.cs" />
+    <Compile Include="Model\Lifx\LifxHome.cs" />
+    <Compile Include="Model\Lifx\LifxLocation.cs" />
+    <Compile Include="Model\Lifx\LifxObject.cs" />
+    <Compile Include="Model\Lifx\LifxStairs.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Model\GoogleMapsObjects\GoogleMapsTrafficJson.cs" />
-    <Compile Include="Model\RatpObjects\RatpTrafficJson.cs" />
+    <Compile Include="Model\GoogleMaps\GoogleMapsTrafficJson.cs" />
+    <Compile Include="Model\Ratp\RatpTrafficJson.cs" />
     <Compile Include="Model\Traffic.cs" />
     <Compile Include="View\Webcam\WebcamPage.xaml.cs">
       <DependentUpon>..\..\Webcam\WebcamPage.xaml</DependentUpon>
@@ -98,12 +98,31 @@
     <Compile Include="View\Lights\LightsPage.xaml.cs">
       <DependentUpon>..\..\Lights\LightsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Traffic\GoogleMapsManager.cs" />
     <Compile Include="Controller\Traffic\RatpManager.cs" />
     <Compile Include="AppConstantsSample.cs" />
-    <Compile Include="Model\DomoticzObjects\DomoticzJsonDevice.cs" />
+    <Compile Include="Model\Domoticz\DomoticzJsonDevice.cs" />
     <Compile Include="Controller\Domoticz\DomoticzManager.cs" />
-    <Compile Include="Model\DomoticzObjects\DomoticzDevice.cs" />
+    <Compile Include="Model\Domoticz\DomoticzDevice.cs" />
+    <Compile Include="Controller\Netatmo\NetatmoManager.cs" />
+    <Compile Include="Controller\Netatmo\NetatmoHttpContentCreator.cs" />
+    <Compile Include="Model\Netatmo\NetatmoWSDashboardData.cs" />
+    <Compile Include="Model\Netatmo\DateTimeExtensions.cs" />
+    <Compile Include="Model\Netatmo\NetatmoDevice.cs" />
+    <Compile Include="Model\Netatmo\Measurement.cs" />
+    <Compile Include="Model\Netatmo\MeasurementData.cs" />
+    <Compile Include="Model\Netatmo\MeasurementValue.cs" />
+    <Compile Include="Model\Netatmo\NetatmoModule.cs" />
+    <Compile Include="Model\Netatmo\OAuthAccessToken.cs" />
+    <Compile Include="Model\Netatmo\Response.cs" />
+    <Compile Include="Model\Netatmo\NetatmoModuleBody.cs" />
+    <Compile Include="Model\Netatmo\NetatmoModuleData.cs" />
+    <Compile Include="Model\Netatmo\WindHistoric.cs" />
+    <Compile Include="Model\GoogleMaps\GoogleMapsManager.cs" />
+    <Compile Include="Model\Netatmo\NetatmoCommon.cs" />
+    <Compile Include="Model\Netatmo\NetatmoWeatherStation.cs" />
+    <Compile Include="Model\Netatmo\NetatmoThermostat.cs" />
+    <Compile Include="Model\Netatmo\NetatmoWeatherStationModule.cs" />
+    <Compile Include="Model\Netatmo\NetatmoThermostatModule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -162,9 +181,9 @@
     <Folder Include="Controller\" />
     <Folder Include="Framework\" />
     <Folder Include="Framework\WebService\" />
-    <Folder Include="Model\LifxObjects\" />
-    <Folder Include="Model\GoogleMapsObjects\" />
-    <Folder Include="Model\RatpObjects\" />
+    <Folder Include="Model\Lifx\" />
+    <Folder Include="Model\GoogleMaps\" />
+    <Folder Include="Model\Ratp\" />
     <Folder Include="View\Webcam\" />
     <Folder Include="View\System\" />
     <Folder Include="View\Multimedia\" />
@@ -177,8 +196,10 @@
     <Folder Include="Controller\Lifx\" />
     <Folder Include="View\Lights\" />
     <Folder Include="Controller\Traffic\" />
-    <Folder Include="Model\DomoticzObjects\" />
+    <Folder Include="Model\Domoticz\" />
     <Folder Include="Controller\Domoticz\" />
+    <Folder Include="Model\Netatmo\" />
+    <Folder Include="Controller\Netatmo\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

@@ -75,7 +75,7 @@ namespace BibHomeAutomationNavigation.LIFX
 		{
 
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _auth);
-			string url = AppConstants.LifxBaseUrl + "lights / label:% SELECTOR / state".Replace(" % SELECTOR", selector);
+			string url = AppConstants.LifxBaseUrl + "lights/label:%SELECTOR/state".Replace("%SELECTOR", selector);
 			Uri uri = new Uri(url);
 			StringContent stringContent = new StringContent("{ \"power\": \"%STATE\" }".Replace("%STATE", on ? "on" : "off"), Encoding.UTF8, "application/json");
 			await client.PutAsync(uri, stringContent);

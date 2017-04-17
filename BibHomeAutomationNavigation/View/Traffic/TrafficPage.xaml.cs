@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using System.Collections.Generic;
 using BibHomeAutomationNavigation.RATP;
 using BibHomeAutomationNavigation.GoogleMaps;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ namespace BibHomeAutomationNavigation
 	{
 		public RatpTrafficJson items { get; set; }
 		static RatpManager ratpManager;
-		public GoogleMapsTrafficJson gmItems { get; set; }
+		public List<GoogleMapsTrafficJson> gmItems { get; set; }
 		static GoogleMapsManager googleMapsManager;
 
 		public TrafficPage()
@@ -18,21 +19,21 @@ namespace BibHomeAutomationNavigation
 			ratpManager = new RatpManager();
 			googleMapsManager = new GoogleMapsManager();
 			items = new RatpTrafficJson();
-			gmItems = new GoogleMapsTrafficJson();
+			gmItems = new List<GoogleMapsTrafficJson>();
 
 		}
 
 		protected override async void OnAppearing()
 		{
 			items = await ratpManager.GetTraffic();
-			gmItems = await googleMapsManager.GetTraffic();
+			gmItems = await googleMapsManager.GetAllTraffic();
 			var lstView = new ListView();
 			lstView.RowHeight = 80;
 			this.Title = "Traffic";
 			lstView.ItemTemplate = new DataTemplate(typeof(CustomTraficCell));
 			lstView.GroupHeaderTemplate = new DataTemplate(typeof(CustomTraficGroupedCell));
 
-			if (items.Result.Rers.Count > 0 && gmItems.rows.Count > 0)
+			if (items.Result.Rers.Count > 0 && gmItems.Count > 0)
 			{
 				var grouped = new ObservableCollection<TrafficType>();
 
@@ -45,9 +46,10 @@ namespace BibHomeAutomationNavigation
 						ratp.Add(new Traffic(item));
 				};
 
-
-				voiture.Add(new Traffic(gmItems));
-
+				foreach (var gmItem in gmItems)
+				{
+					voiture.Add(new Traffic(gmItem));
+				};
 
 				grouped.Add(ratp);
 				grouped.Add(voiture);
