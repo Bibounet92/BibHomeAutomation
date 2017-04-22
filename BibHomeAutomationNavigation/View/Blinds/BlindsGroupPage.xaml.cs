@@ -1,60 +1,45 @@
-﻿using Xamarin.Forms;
-using BibHomeAutomationNavigation.Domoticz;
+﻿using System;
+using Xamarin.Forms;
 using System.Collections.ObjectModel;
-using System;
-
+using BibHomeAutomationNavigation.Domoticz;
 
 namespace BibHomeAutomationNavigation
 {
-	public partial class SystemPage : ContentPage
+	public partial class BlindsGroupPage : ContentPage
 	{
-
 		static DomoticzManager domoticzManager;
-		public DomoticzJsonDeviceResult items { get; set; }
-		public ObservableCollection<DomoticzJsonDevice> devices { get; set; }
+		public DomoticzJsonSceneResult items { get; set; }
+		public ObservableCollection<DomoticzJsonScene> devices { get; set; }
 
-		public SystemPage()
+		public BlindsGroupPage()
 		{
 			InitializeComponent();
 			domoticzManager = new DomoticzManager();
-			items = new DomoticzJsonDeviceResult();
-			devices = new ObservableCollection<DomoticzJsonDevice>();
+			items = new DomoticzJsonSceneResult();
+			devices = new ObservableCollection<DomoticzJsonScene>();
 
 		}
 
 		protected override async void OnAppearing()
 		{
-			items = await domoticzManager.GetDeviceList("utility");
+			devices.Clear();
+			items = await domoticzManager.GetSceneList();
 			var lstView = new ListView();
 			lstView.RowHeight = 60;
-			this.Title = "System";
+			this.Title = "Blinds";
 			lstView.ItemTemplate = new DataTemplate(typeof(CustomSystemCell));
-			lstView.GroupHeaderTemplate = new DataTemplate(typeof(CustomSystemGroupedCell));
 
 			if (items.result.Count > 0)
 			{
-				var grouped = new ObservableCollection<DomoticzDeviceType>();
-
-				var rdc = new DomoticzDeviceType() { Title = "Raspberry", ShortName = "Pi3" };
-				var etage = new DomoticzDeviceType() { Title = "Freebox", ShortName = "Fbx" };
-
 				foreach (var item in items.result)
 				{
-					if (item.HardwareName.Equals("BibRaspberry"))
-						rdc.Add(item);
-					else if (item.HardwareName.Equals("Freebox Server"))
-						etage.Add(item);
+					if (item.Name.StartsWith("Volets",StringComparison.CurrentCulture))
+						devices.Add(item);
+
 				};
 
-				grouped.Add(rdc);
-				grouped.Add(etage);
-
-				lstView.ItemsSource = grouped;
-				lstView.IsGroupingEnabled = true;
-				lstView.GroupDisplayBinding = new Binding("Title");
+				lstView.ItemsSource = devices;
 				lstView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
-				lstView.IsPullToRefreshEnabled = true;
-
 				lstView.ItemSelected += OnItemSelected;
 				lstView.IsPullToRefreshEnabled = true;
 				lstView.Refreshing += OnItemRefresh;
@@ -83,17 +68,17 @@ namespace BibHomeAutomationNavigation
 
 		public class CustomSystemCell : ViewCell
 		{
-
-
-			Label statusLabel { get; set; }
 			Label nameLabel { get; set; }
+			Button open { get; set; }
+			Button close { get; set; }
 
 			public CustomSystemCell()
 			{
 
-				statusLabel = new Label();
 				nameLabel = new Label();
 
+				open = new Button();
+				close = new Button();
 				var horizontalLayout = new StackLayout() { BackgroundColor = Color.White };
 				horizontalLayout.HorizontalOptions = LayoutOptions.FillAndExpand;
 				var verticalLayout = new StackLayout() { BackgroundColor = Color.White };
@@ -102,41 +87,31 @@ namespace BibHomeAutomationNavigation
 
 				//set bindings
 				nameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
-				statusLabel.SetBinding(Label.TextProperty, new Binding("Data"));
+				open.Text = "Open";
+				open.CommandParameter = "Off";
+				open.Clicked += OnButtonClicked;
+				close.Text = "Close";
+				close.Clicked += OnButtonClicked;
+				close.CommandParameter = "On";
 
 				//add views to the view hierarchy
 				horizontalLayout.Children.Add(verticalLayout);
 				verticalLayout.Children.Add(nameLabel);
-				verticalLayout.Children.Add(statusLabel);
+				verticalLayout.Children.Add(open);
+				verticalLayout.Children.Add(close);
 
 				// add to parent view
 				View = horizontalLayout;
 			}
 
-
-		}
-
-		public class CustomSystemGroupedCell : CustomSystemCell
-		{
-			public CustomSystemGroupedCell()
+			void OnButtonClicked(object sender, EventArgs e)
 			{
-				//instantiate each of our views
-
-				var nameLabel = new Label();
-				var horizontalLayout = new StackLayout() { BackgroundColor = Color.Gray };
-
-				//set bindings
-				nameLabel.SetBinding(Label.TextProperty, new Binding("Title"));
-				nameLabel.FontSize = 24;
-
-				//add views to the view hierarchy
-				horizontalLayout.Children.Add(nameLabel);
-
-				// add to parent view
-				View = horizontalLayout;
+				var button = (Button)sender;
+				var device = (DomoticzJsonScene)this.BindingContext;
+				domoticzManager.ManageScenes(device.idx, (string)button.CommandParameter);
 			}
-
 		}
+
 	}
 
 }

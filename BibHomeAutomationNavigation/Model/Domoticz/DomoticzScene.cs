@@ -3,11 +3,15 @@ using BibHomeAutomationNavigation.Domoticz;
 
 namespace BibHomeAutomationNavigation.Domoticz
 {
-	public class DomoticzDevice
+	public class DomoticzScene
 	{
+		public DomoticzScene()
+		{
+		}
+
 	}
 
-	public class DomoticzDeviceType : ObservableCollection<DomoticzJsonDevice>
+	public class DomoticzSceneType : ObservableCollection<DomoticzJsonScene>
 	{
 		public string Title { get; set; }
 		public string ShortName { get; set; }

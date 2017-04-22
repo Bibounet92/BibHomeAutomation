@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="BibHomeAutomationNavigation.ThermostatPage"
+			 Title="Confort">
+	<ContentPage.Content>
+		<StackLayout>
+			<Label x:Name="nameLabel" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label Text="Status" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label x:Name="StatusLabel" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label Text="Température Actuelle" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label x:Name="ActualTemp" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label Text="Température Souhaitée" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label x:Name="AskedTemp"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Stepper x:Name="SelectedTemp" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  />
+			<Label Text="Absent" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Switch x:Name="Absent" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Label Text="Hors Gel" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+			<Switch x:Name="HorsGel" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

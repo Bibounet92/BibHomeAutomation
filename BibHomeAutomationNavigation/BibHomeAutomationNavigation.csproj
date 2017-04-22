@@ -70,17 +70,11 @@
     <Compile Include="View\Multimedia\MultimediaPage.xaml.cs">
       <DependentUpon>..\..\Multimedia\MultimediaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Meteo\MeteoPage.xaml.cs">
-      <DependentUpon>..\..\Meteo\MeteoPage.xaml</DependentUpon>
+    <Compile Include="View\Confort\ThermostatPage.xaml.cs">
+      <DependentUpon>ThermostatPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Measures\MeasuresPage.xaml.cs">
-      <DependentUpon>..\..\Measures\MeasuresPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Confort\ConfortPage.xaml.cs">
-      <DependentUpon>..\..\Confort\ConfortPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Blinds\BlindsPage.xaml.cs">
-      <DependentUpon>..\..\Blinds\BlindsPage.xaml</DependentUpon>
+    <Compile Include="View\Blinds\BlindsDetailPage.xaml.cs">
+      <DependentUpon>BlindsDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Security\SecurityPage.xaml.cs">
       <DependentUpon>..\..\Security\SecurityPage.xaml</DependentUpon>
@@ -100,7 +94,7 @@
     </Compile>
     <Compile Include="Controller\Traffic\RatpManager.cs" />
     <Compile Include="AppConstantsSample.cs" />
-    <Compile Include="Model\Domoticz\DomoticzJsonDevice.cs" />
+    <Compile Include="Model\Domoticz\DomoticzJsonScene .cs" />
     <Compile Include="Controller\Domoticz\DomoticzManager.cs" />
     <Compile Include="Model\Domoticz\DomoticzDevice.cs" />
     <Compile Include="Controller\Netatmo\NetatmoManager.cs" />
@@ -117,12 +111,38 @@
     <Compile Include="Model\Netatmo\NetatmoModuleBody.cs" />
     <Compile Include="Model\Netatmo\NetatmoModuleData.cs" />
     <Compile Include="Model\Netatmo\WindHistoric.cs" />
-    <Compile Include="Model\GoogleMaps\GoogleMapsManager.cs" />
     <Compile Include="Model\Netatmo\NetatmoCommon.cs" />
     <Compile Include="Model\Netatmo\NetatmoWeatherStation.cs" />
     <Compile Include="Model\Netatmo\NetatmoThermostat.cs" />
     <Compile Include="Model\Netatmo\NetatmoWeatherStationModule.cs" />
     <Compile Include="Model\Netatmo\NetatmoThermostatModule.cs" />
+    <Compile Include="View\Security\SecurityPanel.xaml.cs">
+      <DependentUpon>SecurityPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Security\SecurityElements.xaml.cs">
+      <DependentUpon>SecurityElements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Security\SecurityScenes.xaml.cs">
+      <DependentUpon>SecurityScenes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\Traffic\GoogleMapsManager.cs" />
+    <Compile Include="View\Blinds\BlindsPage.xaml.cs">
+      <DependentUpon>BlindsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Blinds\BlindsGroupPage.xaml.cs">
+      <DependentUpon>BlindsGroupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Domoticz\DomoticzJsonDevice.cs" />
+    <Compile Include="Model\Domoticz\DomoticzScene.cs" />
+    <Compile Include="View\Confort\TemperaturesPage.xaml.cs">
+      <DependentUpon>TemperaturesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Confort\MeteoPage.xaml.cs">
+      <DependentUpon>..\..\Meteo\MeteoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Confort\ConfortPage.xaml.cs">
+      <DependentUpon>ConfortPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -147,16 +167,10 @@
     <EmbeddedResource Include="View\Multimedia\MultimediaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Meteo\MeteoPage.xaml">
+    <EmbeddedResource Include="View\Confort\ThermostatPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Measures\MeasuresPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Confort\ConfortPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Blinds\BlindsPage.xaml">
+    <EmbeddedResource Include="View\Blinds\BlindsDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Security\SecurityPage.xaml">
@@ -174,6 +188,30 @@
     <EmbeddedResource Include="View\Lights\LightsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Security\SecurityPanel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Security\SecurityElements.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Security\SecurityScenes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Blinds\BlindsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Blinds\BlindsGroupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Confort\TemperaturesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Confort\MeteoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Confort\ConfortPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -187,8 +225,6 @@
     <Folder Include="View\Webcam\" />
     <Folder Include="View\System\" />
     <Folder Include="View\Multimedia\" />
-    <Folder Include="View\Meteo\" />
-    <Folder Include="View\Measures\" />
     <Folder Include="View\Confort\" />
     <Folder Include="View\Blinds\" />
     <Folder Include="View\Security\" />

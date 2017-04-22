@@ -65,18 +65,6 @@ namespace BibHomeAutomationNavigation
 				IconSource = "reminders.png",
 				TargetType = typeof(SecurityPage)
 			});
-			masterPageItems.Add(new MasterPageItem
-			{
-				Title = "Mesures",
-				IconSource = "reminders.png",
-				TargetType = typeof(MeasuresPage)
-			});
-			masterPageItems.Add(new MasterPageItem
-			{
-				Title = "Meteo",
-				IconSource = "reminders.png",
-				TargetType = typeof(MeteoPage)
-			});
 
 			listView.ItemsSource = masterPageItems;
 		}

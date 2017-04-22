@@ -3,7 +3,6 @@ using BibHomeAutomationNavigation.LIFX.LifxObjects;
 using BibHomeAutomationNavigation.LIFX;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System;
 
 
@@ -18,7 +17,7 @@ namespace BibHomeAutomationNavigation
 
 		public LightsPage()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 			lifxManager = new LifxManager();
 			items = new List<LifxBulb>();
 			bulbs = new ObservableCollection<LifxBulb>();

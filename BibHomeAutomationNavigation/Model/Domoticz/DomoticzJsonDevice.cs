@@ -75,7 +75,7 @@ namespace BibHomeAutomationNavigation.Domoticz
 }
 	}
 
-	public class DomoticzJsonResult
+	public class DomoticzJsonDeviceResult
 	{
 		public int ActTime { get; set; }
 		public string ServerTime { get; set; }

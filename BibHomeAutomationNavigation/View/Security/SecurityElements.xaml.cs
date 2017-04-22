@@ -6,14 +6,14 @@ using System;
 
 namespace BibHomeAutomationNavigation
 {
-	public partial class SystemPage : ContentPage
+	public partial class SecurityElements : ContentPage
 	{
 
 		static DomoticzManager domoticzManager;
 		public DomoticzJsonDeviceResult items { get; set; }
 		public ObservableCollection<DomoticzJsonDevice> devices { get; set; }
 
-		public SystemPage()
+		public SecurityElements()
 		{
 			InitializeComponent();
 			domoticzManager = new DomoticzManager();
@@ -24,30 +24,41 @@ namespace BibHomeAutomationNavigation
 
 		protected override async void OnAppearing()
 		{
-			items = await domoticzManager.GetDeviceList("utility");
+			items = await domoticzManager.GetDeviceList("light");
 			var lstView = new ListView();
 			lstView.RowHeight = 60;
-			this.Title = "System";
-			lstView.ItemTemplate = new DataTemplate(typeof(CustomSystemCell));
-			lstView.GroupHeaderTemplate = new DataTemplate(typeof(CustomSystemGroupedCell));
+			this.Title = "SecurityElement";
+			lstView.ItemTemplate = new DataTemplate(typeof(CustomSecurityElementsCell));
+			lstView.GroupHeaderTemplate = new DataTemplate(typeof(CustomSecurityElementsGroupedCell));
 
 			if (items.result.Count > 0)
 			{
 				var grouped = new ObservableCollection<DomoticzDeviceType>();
 
-				var rdc = new DomoticzDeviceType() { Title = "Raspberry", ShortName = "Pi3" };
-				var etage = new DomoticzDeviceType() { Title = "Freebox", ShortName = "Fbx" };
+				var doorSensor = new DomoticzDeviceType() { Title = "Door Sensor", ShortName = "DS" };
+				var motionSensor = new DomoticzDeviceType() { Title = "Motion Sensor", ShortName = "MS" };
+				var smokeSensor = new DomoticzDeviceType() { Title = "Smoke Sensor", ShortName = "SS" };
+				var floodSensor = new DomoticzDeviceType() { Title = "Flood Sensor", ShortName = "FS" };
 
 				foreach (var item in items.result)
 				{
-					if (item.HardwareName.Equals("BibRaspberry"))
-						rdc.Add(item);
-					else if (item.HardwareName.Equals("Freebox Server"))
-						etage.Add(item);
+					if (item.SwitchType != null && item.Image != null)
+					{
+						if (item.SwitchType.Equals("Door Lock"))
+							doorSensor.Add(item);
+						else if (item.Image.Equals("Water"))
+							floodSensor.Add(item);
+						else if (item.SwitchType.Equals("Motion Sensor"))
+							motionSensor.Add(item);
+						else if (item.SwitchType.Equals("Smoke Detector"))
+							smokeSensor.Add(item);
+					}
 				};
 
-				grouped.Add(rdc);
-				grouped.Add(etage);
+				grouped.Add(doorSensor);
+				grouped.Add(motionSensor);
+				grouped.Add(smokeSensor);
+				grouped.Add(floodSensor);
 
 				lstView.ItemsSource = grouped;
 				lstView.IsGroupingEnabled = true;
@@ -79,16 +90,12 @@ namespace BibHomeAutomationNavigation
 			//Navigation.PushAsync(new LightsDetailPage((LifxBulb)list.SelectedItem));
 		}
 
-
-
-		public class CustomSystemCell : ViewCell
+		public class CustomSecurityElementsCell : ViewCell
 		{
-
-
 			Label statusLabel { get; set; }
 			Label nameLabel { get; set; }
 
-			public CustomSystemCell()
+			public CustomSecurityElementsCell()
 			{
 
 				statusLabel = new Label();
@@ -102,7 +109,7 @@ namespace BibHomeAutomationNavigation
 
 				//set bindings
 				nameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
-				statusLabel.SetBinding(Label.TextProperty, new Binding("Data"));
+				statusLabel.SetBinding(Label.TextProperty, new Binding("Status"));
 
 				//add views to the view hierarchy
 				horizontalLayout.Children.Add(verticalLayout);
@@ -112,16 +119,13 @@ namespace BibHomeAutomationNavigation
 				// add to parent view
 				View = horizontalLayout;
 			}
-
-
 		}
 
-		public class CustomSystemGroupedCell : CustomSystemCell
+		public class CustomSecurityElementsGroupedCell : CustomSecurityElementsCell
 		{
-			public CustomSystemGroupedCell()
+			public CustomSecurityElementsGroupedCell()
 			{
 				//instantiate each of our views
-
 				var nameLabel = new Label();
 				var horizontalLayout = new StackLayout() { BackgroundColor = Color.Gray };
 
@@ -135,8 +139,6 @@ namespace BibHomeAutomationNavigation
 				// add to parent view
 				View = horizontalLayout;
 			}
-
 		}
 	}
-
 }

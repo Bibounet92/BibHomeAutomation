@@ -1,38 +1,22 @@
 ﻿using Xamarin.Forms;
-using BibHomeAutomationNavigation.Netatmo;
 
 namespace BibHomeAutomationNavigation
 {
-	public partial class ConfortPage : ContentPage
+	public partial class ConfortPage : TabbedPage
 	{
-		//readonly NetatmoManager netatmoManager;
-		Response<NetatmoThermostatModuleData> data;
-		NetatmoThermostatModule therm;
 
 		public ConfortPage()
 		{
 			this.InitializeComponent();
-			//netatmoManager = new NetatmoManager();
-			//netatmoManager.LoginSuccessful += ApiLoginSuccessful;
-			//netatmoManager.Login(new[] { NetatmoScope.read_station, NetatmoScope.read_thermostat });
-		}
+			this.Children.Add(new ThermostatPage());
+			this.Children[0].Title = "Thermostat";
+			this.Children[0].Icon = "todo.png";
+			this.Children.Add(new TemperaturesPage());
+			this.Children[1].Title = "Températures";
+			this.Children[1].Icon = "todo.png";
+			this.Children.Add(new MeteoPage());
+			this.Children[2].Title = "Météo";
+			this.Children[2].Icon = "todo.png";		}
 
-
-		protected override async void OnAppearing()
-		{
-			//netatmoManager.Login(new[] { NetatmoScope.read_station, NetatmoScope.read_thermostat });
-			var test = App.netatmoManager.OAuthAccessToken.AccessToken;
-			data = await App.netatmoManager.GetThermostatData(); 
-			therm = (NetatmoThermostatModule)data.Result.Data.Devices[0].Modules[0];
-			nameLabel.Text = data.Result.Data.Devices[0].StationName;
-			AskedTemp.Text = therm.Measures.SetPoint + "°C";
-			ActualTemp.Text = therm.Measures.Temperature + "°C";
-		}
-
-		private async void ApiLoginSuccessful(object sender)
-		{
-			//data = await netatmoManager.GetThermostatData();
-		}
 	}
 }
-

@@ -10,7 +10,7 @@ namespace BibHomeAutomationNavigation
 	{
 		public HttpClient client = new HttpClient();
 
-		public async Task<DomoticzJsonResult> GetDeviceList(string type )
+		public async Task<DomoticzJsonDeviceResult> GetDeviceList(string type )
 		{
 			// type value : light weather temp utility
 
@@ -21,10 +21,48 @@ namespace BibHomeAutomationNavigation
 			HttpResponseMessage response = await client.SendAsync(request);
 			if (response.IsSuccessStatusCode)
 			{
-				return JsonConvert.DeserializeObject<DomoticzJsonResult>(response.Content.ReadAsStringAsync().Result);
+				return JsonConvert.DeserializeObject<DomoticzJsonDeviceResult>(response.Content.ReadAsStringAsync().Result);
 			}
 			return null;
 		}
+
+		//Action : Off (Open) , On (Close), Stop (Stop)
+		public async void ManageBlinds(string idxItem,string action)
+		{
+			string url = AppConstants.DomoticzBaseUrl + "type=command&param=switchlight&idx="+idxItem+"&switchcmd="+action;
+			client.BaseAddress = new Uri(url);
+			client.DefaultRequestHeaders.Accept.Clear();
+			HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
+			await client.SendAsync(request);
+		}
+
+
+		public async Task<DomoticzJsonSceneResult> GetSceneList()
+		{
+			// type value : light weather temp utility
+
+			client.DefaultRequestHeaders.Accept.Clear();
+
+			string url = AppConstants.DomoticzBaseUrl + "type=scenes";
+			HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
+			HttpResponseMessage response = await client.SendAsync(request);
+			if (response.IsSuccessStatusCode)
+			{
+				return JsonConvert.DeserializeObject<DomoticzJsonSceneResult>(response.Content.ReadAsStringAsync().Result);
+			}
+			return null;
+		}
+
+		//Action : Off (Open) , On (Close)
+		public async void ManageScenes(string idxItem, string action)
+		{
+			string url = AppConstants.DomoticzBaseUrl + "type=command&param=switchscene&idx=" + idxItem + "&switchcmd=" + action;
+			client.BaseAddress = new Uri(url);
+			client.DefaultRequestHeaders.Accept.Clear();
+			HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
+			await client.SendAsync(request);
+		}
+
 
 		public DomoticzManager()
 		{

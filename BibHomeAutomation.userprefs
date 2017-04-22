@@ -1,12 +1,8 @@
 ﻿<Properties StartupConfiguration="{3D54620E-23F2-462B-A824-B074D41BD507}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="BibHomeAutomation Status">
     <Files>
-      <File FileName="BibHomeAutomationNavigation/View/Confort/ConfortPage.xaml.cs" Line="37" Column="2" />
-      <File FileName="BibHomeAutomationNavigation/Model/Netatmo/NetatmoThermostatModule.cs" Line="27" Column="2" />
-      <File FileName="BibHomeAutomationNavigation/View/Confort/ConfortPage.xaml" Line="23" Column="1" />
-      <File FileName="BibHomeAutomationNavigation/Model/Netatmo/NetatmoCommon.cs" Line="42" Column="20" />
-      <File FileName="BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" Line="86" Column="2" />
-      <File FileName="BibHomeAutomationNavigation/AppConstants.cs" Line="24" Column="14" />
+      <File FileName="BibHomeAutomationNavigation/View/Security/SecurityElements.xaml.cs" Line="45" Column="30" />
+      <File FileName="BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" Line="81" Column="1" />
       <File FileName="BibHomeAutomation Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -20,7 +16,7 @@
       <Breakpoint enabled="false" file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/View/Meteo/MeteoPage.xaml.cs" relfile="BibHomeAutomationNavigation/View/Meteo/MeteoPage.xaml.cs" line="22" column="1" />
       <Breakpoint enabled="false" file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/Model/GoogleMaps/GoogleMapsManager.cs" relfile="BibHomeAutomationNavigation/Model/GoogleMaps/GoogleMapsManager.cs" line="37" column="1" />
       <Breakpoint file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/View/Confort/ConfortPage.xaml.cs" relfile="BibHomeAutomationNavigation/View/Confort/ConfortPage.xaml.cs" line="26" column="1" />
-      <Breakpoint file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" relfile="BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" line="81" column="4" />
+      <Breakpoint file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/View/Blinds/BlindsPage.xaml.cs" relfile="BibHomeAutomationNavigation/View/Blinds/BlindsPage.xaml.cs" line="112" column="79" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
