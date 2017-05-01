@@ -85,6 +85,12 @@
       <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Xamarians.MediaPlayer">
+      <HintPath>..\packages\Xamarians.MediaPlayer.1.0.0\lib\Xamarin.iOS10\Xamarians.MediaPlayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarians.MediaPlayer.iOS">
+      <HintPath>..\packages\Xamarians.MediaPlayer.1.0.0\lib\Xamarin.iOS10\Xamarians.MediaPlayer.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BibHomeAutomationNavigation\BibHomeAutomationNavigation.csproj">

@@ -15,53 +15,51 @@ namespace BibHomeAutomationNavigation
 		public List<LifxBulb> items { get; set; }
 		public ObservableCollection<LifxBulb> bulbs { get; set; }
 
-		public LightsPage()
-		{
-			this.InitializeComponent();
-			lifxManager = new LifxManager();
-			items = new List<LifxBulb>();
-			bulbs = new ObservableCollection<LifxBulb>();
+        public LightsPage()
+        {
+            this.InitializeComponent();
+            lifxManager = new LifxManager();
+            items = new List<LifxBulb>();
+            bulbs = new ObservableCollection<LifxBulb>();
 
-		}
-
-	    protected override async void OnAppearing()
-		{
-			items = await lifxManager.listBulbs();
-			var lstView = new ListView();
-			lstView.RowHeight = 60;
-			this.Title = "Lights";
-			lstView.ItemTemplate = new DataTemplate(typeof(CustomLightsCell));
-			lstView.GroupHeaderTemplate = new DataTemplate(typeof(CustomLightsGroupedCell));
-
-			if (items.Count > 0)
+			Device.BeginInvokeOnMainThread(async () =>
 			{
-				var grouped = new ObservableCollection<LifxStairs>();
 
-				var rdc = new LifxStairs() { Title = "Rez de chaussée", ShortName = "RDC" };
-				var etage = new LifxStairs() { Title = "1er Etage", ShortName = "1Et" };
+				items = await lifxManager.listBulbs();
+	            ListView lstView = new ListView();
+	            lstView.RowHeight = 60;
+	            this.Title = "Lights";
+	            lstView.ItemTemplate = new DataTemplate(typeof(CustomLightsCell));
+	            lstView.GroupHeaderTemplate = new DataTemplate(typeof(CustomLightsGroupedCell));
 
-				foreach (var item in items)
-				{
-					if (item.group.name.Equals("RDC"))
-						rdc.Add(item);
-					else if (item.group.name.Equals("Etage"))
-						etage.Add(item);
-				};
+	            if (items.Count > 0)
+	            {
+	                var grouped = new ObservableCollection<LifxStairs>();
 
-				grouped.Add(rdc);
-				grouped.Add(etage);
+	                var rdc = new LifxStairs() { Title = "Rez de chaussée", ShortName = "RDC" };
+	                var etage = new LifxStairs() { Title = "1er Etage", ShortName = "1Et" };
 
-				lstView.ItemsSource = grouped;
-				lstView.IsGroupingEnabled = true;
-				lstView.GroupDisplayBinding = new Binding("Title");
-				lstView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
-				lstView.IsPullToRefreshEnabled = true;
+	                foreach (var item in items)
+	                {
+	                    if (item.Group.name.Equals("RDC"))
+	                        rdc.Add(item);
+	                    else if (item.Group.name.Equals("Etage"))
+	                        etage.Add(item);
+	                };
 
-				lstView.ItemSelected += OnItemSelected;
-				lstView.IsPullToRefreshEnabled = true;
-				lstView.Refreshing += OnItemRefresh;
-				Content = lstView;
-			}
+	                grouped.Add(rdc);
+	                grouped.Add(etage);
+
+	                lstView.ItemsSource = grouped;
+	                lstView.IsGroupingEnabled = true;
+	                lstView.GroupDisplayBinding = new Binding("Title");
+	                lstView.IsPullToRefreshEnabled = true;
+	                lstView.ItemSelected += OnItemSelected;
+	                lstView.IsPullToRefreshEnabled = true;
+	                lstView.Refreshing += OnItemRefresh;
+	                Content = lstView;
+	            }
+            });
 		}
 
 		void OnItemRefresh(object sender, EventArgs e)
@@ -94,7 +92,7 @@ namespace BibHomeAutomationNavigation
 			{
 				onOff = new Switch();
 				statusLabel = new Label();
-				nameLabel = new Label();
+                nameLabel = new Label();
 
 				var horizontalLayout = new StackLayout() { BackgroundColor = Color.White };
 				horizontalLayout.HorizontalOptions = LayoutOptions.FillAndExpand;
@@ -103,16 +101,20 @@ namespace BibHomeAutomationNavigation
 				verticalLayout.VerticalOptions = LayoutOptions.Center;
 
 				//set bindings
-				nameLabel.SetBinding(Label.TextProperty, new Binding("label"));
-				statusLabel.SetBinding(Label.TextProperty, new Binding("connected"));
+				nameLabel.SetBinding(Label.TextProperty, new Binding("Label"));
+                nameLabel.FontSize = 20;
+                statusLabel.SetBinding(Label.TextProperty, new Binding("Connected"));
+                statusLabel.FontSize = 12;
 
-				onOff.SetBinding(Switch.IsToggledProperty, new Binding("power"));
+				onOff.SetBinding(Switch.IsToggledProperty, new Binding("Power"));
 				onOff.Toggled += onSwitchValueChanged;
+                onOff.HorizontalOptions = LayoutOptions.EndAndExpand;
+                onOff.VerticalOptions = LayoutOptions.CenterAndExpand;
 
 				//add views to the view hierarchy
 				horizontalLayout.Children.Add(verticalLayout);
 				verticalLayout.Children.Add(nameLabel);
-				verticalLayout.Children.Add(statusLabel);
+                horizontalLayout.Children.Add(statusLabel);
 				verticalLayout.Children.Add(onOff);
 
 				// add to parent view
@@ -143,8 +145,8 @@ namespace BibHomeAutomationNavigation
 
 				//set bindings
 				nameLabel.SetBinding(Label.TextProperty, new Binding("title"));
-				nameLabel.FontSize = 24;
-
+				nameLabel.FontSize = 30;
+                nameLabel.HorizontalOptions = LayoutOptions.CenterAndExpand;
 				//add views to the view hierarchy
 				horizontalLayout.Children.Add(nameLabel);
 

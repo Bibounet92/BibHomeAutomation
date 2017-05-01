@@ -39,7 +39,7 @@ namespace BibHomeAutomationNavigation
 			{
 				Title = "Camera",
 				IconSource = "reminders.png",
-				TargetType = typeof(WebcamPage)
+                TargetType = typeof(CameraPage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{

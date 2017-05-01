@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using Android.App;
 using Android.Content;
@@ -18,6 +18,8 @@ namespace BibHomeAutomationNavigation.Droid
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
+
+            Xamarians.MediaPlayer.Droid.VideoPlayerRenderer.Init();
 
 			LoadApplication (new App ());
 		}

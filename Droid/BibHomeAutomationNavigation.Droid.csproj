@@ -15,7 +15,7 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>BibHomeAutomationNavigation.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -91,6 +91,12 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.224\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarians.MediaPlayer">
+      <HintPath>..\packages\Xamarians.MediaPlayer.1.0.0\lib\MonoAndroid10\Xamarians.MediaPlayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarians.MediaPlayer.Droid">
+      <HintPath>..\packages\Xamarians.MediaPlayer.1.0.0\lib\MonoAndroid10\Xamarians.MediaPlayer.Droid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

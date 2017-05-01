@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using BibHomeAutomationNavigation.Domoticz;
+using BibHomeAutomationNavigation.Framework;
 
 namespace BibHomeAutomationNavigation
 {
@@ -18,16 +19,43 @@ namespace BibHomeAutomationNavigation
 			items = new DomoticzJsonSceneResult();
 			devices = new ObservableCollection<DomoticzJsonScene>();
 
-		}
+			devices.Clear();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                items = await domoticzManager.GetSceneList();
+                var lstView = new ListView();
+                lstView.RowHeight = 80;
+                this.Title = "Blinds";
+                lstView.ItemTemplate = new DataTemplate(typeof(CustomBlindCell));
 
-		protected override async void OnAppearing()
+                if (items.result.Count > 0)
+                {
+                    foreach (var item in items.result)
+                    {
+                        if (item.Name.StartsWith("Volets", StringComparison.CurrentCulture))
+                            devices.Add(item);
+
+                    };
+
+                    lstView.ItemsSource = devices;
+                    lstView.ItemSelected += OnItemSelected;
+                    lstView.IsPullToRefreshEnabled = true;
+                    lstView.SeparatorVisibility = SeparatorVisibility.None;
+                    lstView.Refreshing += OnItemRefresh;
+                    Content = lstView;
+                }
+            });
+
+        }
+
+		/*protected override async void OnAppearing()
 		{
 			devices.Clear();
 			items = await domoticzManager.GetSceneList();
 			var lstView = new ListView();
-			lstView.RowHeight = 60;
+			lstView.RowHeight = 80;
 			this.Title = "Blinds";
-			lstView.ItemTemplate = new DataTemplate(typeof(CustomSystemCell));
+			lstView.ItemTemplate = new DataTemplate(typeof(CustomBlindCell));
 
 			if (items.result.Count > 0)
 			{
@@ -39,13 +67,12 @@ namespace BibHomeAutomationNavigation
 				};
 
 				lstView.ItemsSource = devices;
-				lstView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
 				lstView.ItemSelected += OnItemSelected;
 				lstView.IsPullToRefreshEnabled = true;
 				lstView.Refreshing += OnItemRefresh;
 				Content = lstView;
 			}
-		}
+		}*/
 
 		void OnItemRefresh(object sender, EventArgs e)
 		{
@@ -66,42 +93,49 @@ namespace BibHomeAutomationNavigation
 
 
 
-		public class CustomSystemCell : ViewCell
+		public class CustomBlindCell : ViewCell
 		{
-			Label nameLabel { get; set; }
-			Button open { get; set; }
-			Button close { get; set; }
+			Label NameLabel { get; set; }
+			MyButton Open { get; set; }
+			MyButton Close { get; set; }
 
-			public CustomSystemCell()
+			public CustomBlindCell()
 			{
 
-				nameLabel = new Label();
+				NameLabel = new Label();
 
-				open = new Button();
-				close = new Button();
-				var horizontalLayout = new StackLayout() { BackgroundColor = Color.White };
-				horizontalLayout.HorizontalOptions = LayoutOptions.FillAndExpand;
+				Open = new MyButton();
+				Close = new MyButton();
+
 				var verticalLayout = new StackLayout() { BackgroundColor = Color.White };
-				verticalLayout.Orientation = StackOrientation.Horizontal;
-				verticalLayout.VerticalOptions = LayoutOptions.Center;
+				verticalLayout.Orientation = StackOrientation.Vertical;
+				verticalLayout.VerticalOptions = LayoutOptions.Center; 
+
+                var horizontalLayout = new StackLayout() { BackgroundColor = Color.White };
+                horizontalLayout.Orientation = StackOrientation.Horizontal;
+				horizontalLayout.HorizontalOptions = LayoutOptions.CenterAndExpand;
+
 
 				//set bindings
-				nameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
-				open.Text = "Open";
-				open.CommandParameter = "Off";
-				open.Clicked += OnButtonClicked;
-				close.Text = "Close";
-				close.Clicked += OnButtonClicked;
-				close.CommandParameter = "On";
+				NameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
+                NameLabel.HorizontalOptions = LayoutOptions.Center;
+
+				Open.Text = "Open";
+				Open.CommandParameter = "Off";
+				Open.Clicked += OnButtonClicked;
+
+				Close.Text = "Close";
+				Close.Clicked += OnButtonClicked;
+				Close.CommandParameter = "On";
 
 				//add views to the view hierarchy
-				horizontalLayout.Children.Add(verticalLayout);
-				verticalLayout.Children.Add(nameLabel);
-				verticalLayout.Children.Add(open);
-				verticalLayout.Children.Add(close);
+				verticalLayout.Children.Add(NameLabel);
+                verticalLayout.Children.Add(horizontalLayout);
+				horizontalLayout.Children.Add(Open);
+				horizontalLayout.Children.Add(Close);
 
 				// add to parent view
-				View = horizontalLayout;
+				View = verticalLayout;
 			}
 
 			void OnButtonClicked(object sender, EventArgs e)

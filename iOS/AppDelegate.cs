@@ -16,6 +16,8 @@ namespace BibHomeAutomationNavigation.iOS
 
 			LoadApplication (new App());
 
+            Xamarians.MediaPlayer.iOS.VideoPlayerRenderer.Init();
+
 			return base.FinishedLaunching (app, options);
 		}
 	}

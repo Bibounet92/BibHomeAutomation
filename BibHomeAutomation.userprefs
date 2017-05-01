@@ -1,12 +1,20 @@
 ﻿<Properties StartupConfiguration="{3D54620E-23F2-462B-A824-B074D41BD507}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BibHomeAutomation Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BibHomeAutomationNavigation/View/Camera/DlinkCameraPage.xaml">
     <Files>
-      <File FileName="BibHomeAutomationNavigation/View/Security/SecurityElements.xaml.cs" Line="45" Column="30" />
-      <File FileName="BibHomeAutomationNavigation/Controller/Lifx/LifxManager.cs" Line="81" Column="1" />
+      <File FileName="BibHomeAutomationNavigation/View/Blinds/BlindsGroupPage.xaml.cs" Line="43" Column="76" />
+      <File FileName="BibHomeAutomationNavigation/Framework/Component/MyButton.cs" Line="14" Column="15" />
+      <File FileName="BibHomeAutomationNavigation/View/Blinds/BlindsDetailPage.xaml.cs" Line="40" Column="17" />
+      <File FileName="../../../../Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.21/lib/msbuild/iOS/Xamarin.iOS.Common.targets" Line="605" Column="3" />
+      <File FileName="iOS/Info.plist" />
+      <File FileName="iOS/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="iOS/packages.config" Line="1" Column="1" />
+      <File FileName="iOS/Entitlements.plist" />
+      <File FileName="BibHomeAutomationNavigation/View/Lights/LightsPage.xaml.cs" Line="26" Column="5" />
       <File FileName="BibHomeAutomation Status" />
+      <File FileName="BibHomeAutomationNavigation/View/Camera/DlinkCameraPage.xaml" Line="11" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/Bruno/Projects/BibHomeAutomation/BibHomeAutomationNavigation/Trafic/GoogleMapsManager.cs" relfile="BibHomeAutomationNavigation/Trafic/GoogleMapsManager.cs" line="42" column="1" />
@@ -21,5 +29,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.BibHomeAutomationNavigation.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.3c8d8d999fc93b3d1bffaa0260572c9da75063b4" />
+  <MonoDevelop.Ide.ItemProperties.BibHomeAutomationNavigation.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.09F8DF82-809C-4268-8238-FE429D7BF824" />
 </Properties>

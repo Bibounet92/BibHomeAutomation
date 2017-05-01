@@ -61,9 +61,6 @@
     <Compile Include="Model\GoogleMaps\GoogleMapsTrafficJson.cs" />
     <Compile Include="Model\Ratp\RatpTrafficJson.cs" />
     <Compile Include="Model\Traffic.cs" />
-    <Compile Include="View\Webcam\WebcamPage.xaml.cs">
-      <DependentUpon>..\..\Webcam\WebcamPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\System\SystemPage.xaml.cs">
       <DependentUpon>..\..\System\SystemPage.xaml</DependentUpon>
     </Compile>
@@ -143,6 +140,19 @@
     <Compile Include="View\Confort\ConfortPage.xaml.cs">
       <DependentUpon>ConfortPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Camera\DlinkCameraPage.xaml.cs">
+      <DependentUpon>DlinkCameraPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Camera\CameraPage.xaml.cs">
+      <DependentUpon>CameraPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Camera\NetWelcomePage.xaml.cs">
+      <DependentUpon>NetWelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Camera\NetPresencePage.xaml.cs">
+      <DependentUpon>NetPresencePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\Component\MyButton.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -156,9 +166,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Webcam\WebcamPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="View\System\SystemPage.xaml">
@@ -212,6 +219,18 @@
     <EmbeddedResource Include="View\Confort\ConfortPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Camera\DlinkCameraPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Camera\CameraPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Camera\NetWelcomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Camera\NetPresencePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -222,7 +241,6 @@
     <Folder Include="Model\Lifx\" />
     <Folder Include="Model\GoogleMaps\" />
     <Folder Include="Model\Ratp\" />
-    <Folder Include="View\Webcam\" />
     <Folder Include="View\System\" />
     <Folder Include="View\Multimedia\" />
     <Folder Include="View\Confort\" />
@@ -236,6 +254,7 @@
     <Folder Include="Controller\Domoticz\" />
     <Folder Include="Model\Netatmo\" />
     <Folder Include="Controller\Netatmo\" />
+    <Folder Include="View\Camera\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -258,6 +277,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarians.MediaPlayer">
+      <HintPath>..\packages\Xamarians.MediaPlayer.1.0.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Xamarians.MediaPlayer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

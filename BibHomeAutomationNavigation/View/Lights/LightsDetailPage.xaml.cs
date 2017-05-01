@@ -22,8 +22,8 @@ namespace BibHomeAutomationNavigation
 			InitializeComponent();
 			lifxManager = new LifxManager();
 			thisBulb = bulb;
-			LightLabel.Text = bulb.label;
-			LightSwitch.IsToggled = bulb.power; 
+			LightLabel.Text = bulb.Label;
+			LightSwitch.IsToggled = bulb.Power; 
 
 		}
 
@@ -35,7 +35,7 @@ namespace BibHomeAutomationNavigation
 		async void onSwitchValueChanged(object sender, ToggledEventArgs args)
 		{
 			var thisSwitch = (Switch)sender;
-			await lifxManager.setPower(thisSwitch.IsToggled, thisBulb.label);
+			await lifxManager.setPower(thisSwitch.IsToggled, thisBulb.Label);
 		}
 
 
